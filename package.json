@@ -13,7 +13,8 @@
     "lint": "semistandard",
     "lint:fix": "semistandard --fix",
     "reset-db": "rm -f ./db.sqlite3 && node create-mock-data.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "debug": "nodemon --inspect-brk index.js"
   },
   "dependencies": {
     "express": "^4.15.4",
