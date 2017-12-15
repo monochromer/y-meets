@@ -24,6 +24,8 @@ module.exports = function (sequelize) {
   Event.belongsTo(Room);
 
   return {
-    Room, Event, User
+    Room,
+    Event,
+    User
   };
 };
