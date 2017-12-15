@@ -11,6 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "semistandard",
+    "lint:fix": "semistandard --fix",
     "reset-db": "rm -f ./db.sqlite3 && node create-mock-data.js",
     "dev": "nodemon index.js"
   },
