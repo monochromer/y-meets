@@ -9,24 +9,29 @@
     "node": ">=8.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env-shell NODE_ENV=production NODE_PATH=. node index.js",
+    "dev": "cross-env-shell NODE_ENV=development NODE_PATH=. nodemon index.js",
+    "debug": "cross-env-shell NODE_ENV=development NODE_PATH=. nodemon --inspect-brk index.js",
+    "reset-db": "cross-env-shell NODE_PATH=. \"rm -f ./dbdata/*.sqlite3 && node seed/create-mock-data.js\"",
+    "test": "cross-env-shell NODE_PATH=. NODE_ENV=test \"npm run reset-db && mocha test/**/*.test.js\"",
     "lint": "semistandard",
     "lint:fix": "semistandard --fix",
-    "reset-db": "rm -f ./db.sqlite3 && node create-mock-data.js",
-    "dev": "nodemon index.js",
-    "debug": "nodemon --inspect-brk index.js"
+    "upgrade": "npx npm-check-updates --upgrade"
   },
   "dependencies": {
-    "express": "^4.15.4",
-    "express-graphql": "^0.6.11",
-    "graphql": "^0.11.1",
-    "graphql-date": "^1.0.3",
-    "graphql-tools": "^1.2.1",
-    "sequelize": "^4.7.5",
-    "sqlite3": "^3.1.9"
+    "cross-env": "5.1.1",
+    "express": "4.16.2",
+    "express-graphql": "0.6.11",
+    "graphql": "0.12.0",
+    "graphql-date": "1.0.3",
+    "graphql-tools": "2.13.0",
+    "sequelize": "4.28.5",
+    "sqlite3": "3.1.13"
   },
   "devDependencies": {
-    "nodemon": "^1.12.5",
-    "semistandard": "^11.0.0"
+    "chai": "4.1.2",
+    "mocha": "4.0.1",
+    "nodemon": "1.13.3",
+    "semistandard": "11.0.0"
   }
 }

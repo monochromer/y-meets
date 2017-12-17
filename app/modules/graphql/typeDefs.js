@@ -5,11 +5,12 @@ module.exports = `
     id: ID!
     login: String!
     homeFloor: Int
-    avatarUrl: String!
+    avatarUrl: String
   }
 
   input UserInput {
     login: String!
+    avatarUrl: String
     homeFloor: Int
   }
 
