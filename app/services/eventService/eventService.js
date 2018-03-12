@@ -40,8 +40,9 @@ module.exports = {
     return Event
       .findById(id)
       .then(event => {
-        event.removeUser(userId);
-        return event;
+        return event
+          .removeUser(userId)
+          .then(() => event);
       });
   },
 
@@ -49,8 +50,9 @@ module.exports = {
     return Event
       .findById(id)
       .then(event => {
-        event.addUser(userId);
-        return event;
+        return event
+          .addUser(userId)
+          .then(() => event)
       });
   },
 
