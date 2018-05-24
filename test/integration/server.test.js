@@ -23,10 +23,10 @@ describe('server test', () => {
     const options = new URL(`http://${config.IP}:${config.PORT}`);
 
     let req = request(options, (res) => {
-      let body = '';
-      res.setEncoding('utf8');
-      res.on('data', (chunk) => { body += chunk });
+      let body = [];
+      res.on('data', (chunk) => { body.push(chunk) });
       res.on('end', () => {
+        body = Buffer.concat(body).toString();
         assert.equal(res.statusCode, 200);
         assert.equal(body, view);
         done();
@@ -53,9 +53,6 @@ describe('server test', () => {
     };
 
     let req = request(options, (res) => {
-      let body = '';
-      res.setEncoding('utf8');
-      res.on('data', (chunk) => { body += chunk });
       res.on('end', () => {
         assert.equal(res.statusCode >= 200 && res.statusCode < 400, true);
         done();
